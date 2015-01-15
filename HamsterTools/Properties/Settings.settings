@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="HamsterTools.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="GameExeLocation" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\OHRRPGCE\game.exe</Value>
+    </Setting>
+    <Setting Name="CustomExeLocation" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\OHRRPGCE\custom.exe</Value>
+    </Setting>
+    <Setting Name="HspeakLocation" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\OHRRPGCE\hspeak.exe</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
