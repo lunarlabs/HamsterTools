@@ -59,7 +59,26 @@ namespace HamsterTools
         }
         const int FixBitsSize = 23;
 
+        public enum GameErrorHandling
+        {
+            Default, Reserved, ShowAllWarnings, SuppressSomeWarnings, SuppressWeakTypeChecking, DoNotShowNewErrors,
+            CorruptionOrIntepreterOnly
+        }
 
+        public enum ScriptErrorType
+        {
+            Information, Warning, SuspiciousOperation, Bounds, BadOperation, Error, EngineBug
+        }
+
+        public enum EquipmentElementMath
+        {
+            Stupid, Additive, Multiplicative
+        }
+
+        public enum InventoryAutosortMethod
+        {
+            ByType, ByUsability, Alphabetically, ByID, JustRemoveBlanks
+        }
         /*
          * RELOAD constants
          */

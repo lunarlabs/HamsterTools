@@ -11,197 +11,197 @@ namespace HamsterTools.Reload
     class ReloadNode
     {
         //Declarations
-        private ReloadNodeType type;
+        private ReloadNodeType _type;
         public ReloadNodeType Type
         {
             get
             {
-                return type;
+                return _type;
             }
         }
 
-        private string nodeName;
+        private string _nodeName;
         public string Name
         {
             get
             {
-                return nodeName;
+                return _nodeName;
             }
             set
             {
-                nodeName = value;
+                _nodeName = value;
             }
         }
 
-        private byte byteData;
+        private byte _byteData;
         public byte ByteData
         {
             get
             {
-                if (type == ReloadNodeType.Byte)
+                if (_type == ReloadNodeType.Byte)
                 {
-                    return byteData;
+                    return _byteData;
                 }
                 else
                 {
-                    string err = "Wrong node type: Tried to read Byte value from a " + type.ToString() + " node.";
+                    string err = "Wrong node type: Tried to read Byte value from a " + _type.ToString() + " node.";
                     throw new InvalidOperationException(err);
                 }
             }
             set
             {
-                if (type == ReloadNodeType.Byte)
+                if (_type == ReloadNodeType.Byte)
                 {
-                    byteData = value;
+                    _byteData = value;
                 }
                 else
                 {
-                    string err = "Wrong node type: tried to pass a Byte value to a " + type.ToString() + " node.";
+                    string err = "Wrong node type: tried to pass a Byte value to a " + _type.ToString() + " node.";
                     throw new InvalidOperationException(err);
                 }
             }
         }
 
-        private short int16Data;
+        private short _int16Data;
         public short Int16Data
         {
             get
             {
-                if (type == ReloadNodeType.Int16)
+                if (_type == ReloadNodeType.Int16)
                 {
-                    return int16Data;
+                    return _int16Data;
                 }
                 else
                 {
-                    string err = "Wrong node type: Tried to read Int16 value from a " + type.ToString() + " node.";
+                    string err = "Wrong node type: Tried to read Int16 value from a " + _type.ToString() + " node.";
                     throw new InvalidOperationException(err);
                 }
             }
             set
             {
-                if (type == ReloadNodeType.Int16)
+                if (_type == ReloadNodeType.Int16)
                 {
-                    int16Data = value;
+                    _int16Data = value;
                 }
                 else
                 {
-                    string err = "Wrong node type: tried to pass a Int16 value to a " + type.ToString() + " node.";
+                    string err = "Wrong node type: tried to pass a Int16 value to a " + _type.ToString() + " node.";
                     throw new InvalidOperationException(err);
                 }
             }
         }
 
-        private int int32Data;
+        private int _int32Data;
         public int Int32Data
         {
             get
             {
-                if (type == ReloadNodeType.Int32)
+                if (_type == ReloadNodeType.Int32)
                 {
-                    return int32Data;
+                    return _int32Data;
                 }
                 else
                 {
-                    string err = "Wrong node type: Tried to read Int32 value from a " + type.ToString() + " node.";
+                    string err = "Wrong node type: Tried to read Int32 value from a " + _type.ToString() + " node.";
                     throw new InvalidOperationException(err);
                 }
             }
             set
             {
-                if (type == ReloadNodeType.Int32)
+                if (_type == ReloadNodeType.Int32)
                 {
-                    int32Data = value;
+                    _int32Data = value;
                 }
                 else
                 {
-                    string err = "Wrong node type: tried to pass a Int32 value to a " + type.ToString() + " node.";
+                    string err = "Wrong node type: tried to pass a Int32 value to a " + _type.ToString() + " node.";
                     throw new InvalidOperationException(err);
                 }
             }
         }
 
-        private long int64Data;
+        private long _int64Data;
         public long Int64Data
         {
             get
             {
-                if (type == ReloadNodeType.Int64)
+                if (_type == ReloadNodeType.Int64)
                 {
-                    return int64Data;
+                    return _int64Data;
                 }
                 else
                 {
-                    string err = "Wrong node type: Tried to read Int64 value from a " + type.ToString() + " node.";
+                    string err = "Wrong node type: Tried to read Int64 value from a " + _type.ToString() + " node.";
                     throw new InvalidOperationException(err);
                 }
             }
             set
             {
-                if (type == ReloadNodeType.Int64)
+                if (_type == ReloadNodeType.Int64)
                 {
-                    int64Data = value;
+                    _int64Data = value;
                 }
                 else
                 {
-                    string err = "Wrong node type: tried to pass a Int64 value to a " + type.ToString() + " node.";
+                    string err = "Wrong node type: tried to pass a Int64 value to a " + _type.ToString() + " node.";
                     throw new InvalidOperationException(err);
                 }
             }
         }
 
-        private double doubleData;
+        private double _doubleData;
         public double DoubleData
         {
             get
             {
-                if (type == ReloadNodeType.Double)
+                if (_type == ReloadNodeType.Double)
                 {
-                    return doubleData;
+                    return _doubleData;
                 }
                 else
                 {
-                    string err = "Wrong node type: Tried to read Double value from a " + type.ToString() + " node.";
+                    string err = "Wrong node type: Tried to read Double value from a " + _type.ToString() + " node.";
                     throw new InvalidOperationException(err);
                 }
             }
             set
             {
-                if (type == ReloadNodeType.Double)
+                if (_type == ReloadNodeType.Double)
                 {
-                    doubleData = value;
+                    _doubleData = value;
                 }
                 else
                 {
-                    string err = "Wrong node type: tried to pass a Double value to a " + type.ToString() + " node.";
+                    string err = "Wrong node type: tried to pass a Double value to a " + _type.ToString() + " node.";
                     throw new InvalidOperationException(err);
                 }
             }
         }
         
-        private string stringData;
+        private string _stringData;
         public String StringData
         {
             get
             {
-                if (type == ReloadNodeType.String)
+                if (_type == ReloadNodeType.String)
                 {
-                    return stringData;
+                    return _stringData;
                 }
                 else
                 {
-                    string err = "Wrong node type: Tried to read String value from a " + type.ToString() + " node.";
+                    string err = "Wrong node type: Tried to read String value from a " + _type.ToString() + " node.";
                     throw new InvalidOperationException(err);
                 }
             }
             set
             {
-                if (type == ReloadNodeType.String)
+                if (_type == ReloadNodeType.String)
                 {
-                    stringData = value;
+                    _stringData = value;
                 }
                 else
                 {
-                    string err = "Wrong node type: tried to pass a String value to a " + type.ToString() + " node.";
+                    string err = "Wrong node type: tried to pass a String value to a " + _type.ToString() + " node.";
                     throw new InvalidOperationException(err);
                 }
             }
@@ -213,46 +213,51 @@ namespace HamsterTools.Reload
         public ReloadNode()
         {
             //No argument means a null node type.
-            type = ReloadNodeType.Null;
+            _type = ReloadNodeType.Null;
         }
 
         public ReloadNode(byte bData){
-            type=ReloadNodeType.Byte;
-            byteData = bData;
+            _type=ReloadNodeType.Byte;
+            _byteData = bData;
         }
 
         public ReloadNode(short sData)
         {
-            type = ReloadNodeType.Int16;
-            int16Data = sData;
+            _type = ReloadNodeType.Int16;
+            _int16Data = sData;
         }
 
         public ReloadNode(int iData)
         {
-            type = ReloadNodeType.Int32;
-            int32Data = iData;
+            _type = ReloadNodeType.Int32;
+            _int32Data = iData;
         }
 
         public ReloadNode(long lData)
         {
-            type = ReloadNodeType.Int64;
-            int64Data = lData;
+            _type = ReloadNodeType.Int64;
+            _int64Data = lData;
         }
 
         public ReloadNode(double dData)
         {
-            type = ReloadNodeType.Double;
-            doubleData = dData;
+            _type = ReloadNodeType.Double;
+            _doubleData = dData;
         }
 
         public ReloadNode(string sData)
         {
-            type = ReloadNodeType.String;
-            stringData = sData;
+            _type = ReloadNodeType.String;
+            _stringData = sData;
         }
 
         //TODO Add methods related to children.
 
+    }
+
+    public class ReloadFileIO
+    {
+        //TODO Write this class.
     }
 
     enum ReloadNodeType
