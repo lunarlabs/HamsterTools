@@ -16,14 +16,60 @@ namespace HamsterTools
 
         private System.IO.File lump;
         private System.IO.Directory unlumpedDirectory;
-        private byte[] _length;
+        private byte[] _PDPlength;
 
         
         public static void unLump(string sourceFileLocation, string destinationFileName)
         {
-            Console.WriteLine("Unlumping " + Path.GetFileName(sourceFileLocation) + " to " 
-                + Path.GetDirectoryName(destinationFileName) +"...");
+            bool _endOfFile = false;
+            string _fileName;
+            long _length;
 
+            if (File.Exists(sourceFileLocation))
+            {
+                Console.WriteLine("Unlumping " + Path.GetFileName(sourceFileLocation) + " to "
+                    + Path.GetDirectoryName(destinationFileName) + "...");
+                if (Directory.Exists(destinationFileName))
+                {
+                    Console.WriteLine("Directory exists, files may be overwritten.");
+                }
+                else
+                {
+                    Directory.CreateDirectory(sourceFileLocation);
+                }
+
+                using (FileStream inFile = new FileStream(sourceFileLocation, FileMode.Create))
+                {
+                    using (BinaryReader r = new BinaryReader(inFile))
+                    {
+                        byte readByte;
+                        StringBuilder extractedFileName = new StringBuilder();
+                        //read the file name until we hit NUL
+                        if (inFile.Length == 0)
+                        {
+                            throw new EndOfStreamException("File is zero bytes");
+                        }
+                        readByte = r.ReadByte();
+                        do
+                        {
+                            if (inFile.Position == inFile.Length)
+                            {
+                                throw new EndOfStreamException("Reached the end of the file while reading file name");
+                            }
+                            extractedFileName.Append((char)readByte);
+                        } while (readByte > 0);
+
+                        //read the length and translate it from PDP-endian to proper format
+
+                        //read the file for the length specified
+                    }
+                }
+
+            }
+            else
+            {
+                throw new FileNotFoundException("Can't find the lump file: " + sourceFileLocation);
+            }
         }
 
         public static void unLump(string sourceFileLocation)
