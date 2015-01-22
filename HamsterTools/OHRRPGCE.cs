@@ -12,7 +12,7 @@ namespace HamsterTools
         /*
          *OHRRPGCE CUSTOM constants 
          */
-        const int CurrentRPGVersion = 19;
+        public const int CurrentRPGVersion = 19;
         // It is a good idea to increment this number each time a major feature
         // has been added, if opening a new game in an old editor would cause data-loss
         // Don't be afraid to increment this. Backcompat warnings are a good thing!
@@ -30,7 +30,7 @@ namespace HamsterTools
         // 17 - alectormancy wip increase global limit from 4095 to 16383
         // 18 - beelzebufo turn-based support
         // 19 - beelzebufo replaced .DT0 with heroes.reld
-        const int CurrentRSAVVersion = 3;
+        public const int CurrentRSAVVersion = 3;
         // Increment this number any time that loading and resaving a game in either
         // new or old versions of Game leads to data-loss, or major new features are
         // added.
@@ -43,7 +43,7 @@ namespace HamsterTools
         {
             HP, MP, Attack, Aim, Defense, Dodge, Magic, Will, Speed, Counter, Focus, ExtraHits, User
         }
-        const int LastStat = 11;
+        public const int LastStat = 11;
 
         public enum StatsAt
         {
@@ -57,7 +57,7 @@ namespace HamsterTools
             InitDamageDisplay, DefaultLevelCap, HeroElementals, OldElementalFailBit, AttackElementFails, EnemyElementals,
             ItemElementals, NumElements, RemoveDamageMP, DefaultMaxLevel, Unused23
         }
-        const int FixBitsSize = 23;
+        public const int FixBitsSize = 23;
 
         public enum GameErrorHandling
         {
@@ -83,11 +83,11 @@ namespace HamsterTools
          * RELOAD constants
          */
 
-        const byte[] ReloadMagicNumber = { 0x52, 0x45, 0x4c, 0x44 }; 
+        public readonly byte[] ReloadMagicNumber = { 0x52, 0x45, 0x4c, 0x44 }; 
         // "RELD" ... if it doesn't have this as the first 4 bytes it's NOT a reload file!
-        const byte ReloadVersionNumber = 1;
+        public const byte ReloadVersionNumber = 1;
         // Remember to keep up to date with the email list about RELOAD developments.
-        const long ReloadHeaderSize = 13;
+        public const long ReloadHeaderSize = 13;
         // Why a long? Ask TMC or whoever made the RELOAD spec...
     }
 }
