@@ -23,7 +23,7 @@ namespace HamsterTools
             byte[] _PDPlength;
             int _length;
 
-            if (File.Exists(sourceFileLocation))
+            if (System.IO.File.Exists(sourceFileLocation))
             {
                 Console.WriteLine("Unlumping " + Path.GetFileName(sourceFileLocation) + " to "
                     + destinationDirectory + "...");
@@ -33,7 +33,7 @@ namespace HamsterTools
                 }
                 else
                 {
-                    Directory.CreateDirectory(sourceFileLocation);
+                    Directory.CreateDirectory(destinationDirectory);
                 }
 
                 using (FileStream inFile = new FileStream(sourceFileLocation, FileMode.Open))
@@ -42,10 +42,11 @@ namespace HamsterTools
                     {
                         throw new EndOfStreamException("File is zero bytes");
                     }
-                    while (_endOfFile == false)
+                    using (BinaryReader r = new BinaryReader(inFile))
                     {
-                        using (BinaryReader r = new BinaryReader(inFile))
+                        while (_endOfFile == false)
                         {
+
                             StringBuilder extractedFileName = new StringBuilder(50);
                             //read the file name until we hit NUL
 
@@ -69,7 +70,7 @@ namespace HamsterTools
                             {
                                 throw new EndOfStreamException("Reached the end of the file while reading file length");
                             }
-                            _length = convertLength(r.ReadBytes(4));
+                            _length = convertLength(_PDPlength);
                             Console.Write(", " + _length + " bytes... ");
 
                             //read the file for the length specified
@@ -94,9 +95,9 @@ namespace HamsterTools
                             }
 
                         }
+                    }   
                     }
                     Console.WriteLine("Finished unlumping!");
-                }
 
             }
             else
@@ -108,7 +109,7 @@ namespace HamsterTools
         private static int convertLength(byte[] PDPvalue)
         {
             int result;
-            byte[] convertedLength = {PDPvalue[2], PDPvalue[3], PDPvalue[0], PDPvalue[1] };
+            byte[] convertedLength = {PDPvalue[2], PDPvalue[3], PDPvalue[1], PDPvalue[0] };
             result = BitConverter.ToInt32(convertedLength, 0);
             return result;
         }
@@ -117,7 +118,7 @@ namespace HamsterTools
         {
             Console.WriteLine("No destination directory specified, unlumping to " + Path.GetFileName(sourceFileLocation) 
                 + ".hwtmp...");
-            string tempDir = Path.GetFullPath(sourceFileLocation) + ".hwtwmp";
+            string tempDir = sourceFileLocation + ".hwtmp";
             unLump(sourceFileLocation, tempDir);
         }
 

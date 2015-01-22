@@ -49,7 +49,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>HamsterTools.Reload.Reload</StartupObject>
+    <StartupObject>HamsterTools.Kickstart</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -71,6 +71,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="HamsterTools.cs" />
     <Compile Include="LumpManager.cs" />
     <Compile Include="OHRRPGCE.cs" />
     <Compile Include="Properties\Settings.Designer.cs">

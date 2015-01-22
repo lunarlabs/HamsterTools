@@ -83,7 +83,7 @@ namespace HamsterTools
          * RELOAD constants
          */
 
-        public readonly byte[] ReloadMagicNumber = { 0x52, 0x45, 0x4c, 0x44 }; 
+        public static readonly byte[] ReloadMagicNumber = { 0x52, 0x45, 0x4c, 0x44 }; 
         // "RELD" ... if it doesn't have this as the first 4 bytes it's NOT a reload file!
         public const byte ReloadVersionNumber = 1;
         // Remember to keep up to date with the email list about RELOAD developments.
