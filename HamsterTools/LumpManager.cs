@@ -80,11 +80,7 @@ namespace HamsterTools
                                 {
                                     for (int i = 0; i < _length; i++)
                                     {
-                                        w.Write(r.ReadByte());
-                                        if (inFile.Position == inFile.Length)
-                                        {
-                                            throw new EndOfStreamException("Reached the end of the file too early");
-                                        }
+                                            w.Write(r.ReadByte());  
                                     }
                                     Console.WriteLine("done.");
                                 }
@@ -109,7 +105,7 @@ namespace HamsterTools
         private static int convertLength(byte[] PDPvalue)
         {
             int result;
-            byte[] convertedLength = {PDPvalue[2], PDPvalue[3], PDPvalue[1], PDPvalue[0] };
+            byte[] convertedLength = {PDPvalue[2], PDPvalue[3], PDPvalue[0], PDPvalue[1] };
             result = BitConverter.ToInt32(convertedLength, 0);
             return result;
         }
