@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace HamsterTools
 {
@@ -25,11 +26,12 @@ namespace HamsterTools
 
             if (System.IO.File.Exists(sourceFileLocation))
             {
-                Console.WriteLine("Unlumping " + Path.GetFileName(sourceFileLocation) + " to "
+                Debug.WriteLine("Unlumping " + Path.GetFileName(sourceFileLocation) + " to "
                     + destinationDirectory + "...");
+                Debug.Indent();
                 if (Directory.Exists(destinationDirectory))
                 {
-                    Console.WriteLine("Directory exists, files may be overwritten.");
+                    Debug.WriteLine("Directory exists, files may be overwritten.");
                 }
                 else
                 {
@@ -62,7 +64,7 @@ namespace HamsterTools
                             } while (b > 0);
                             _fileName = Path.GetFullPath(destinationDirectory) + Path.DirectorySeparatorChar + extractedFileName.ToString();
 
-                            Console.Write("Unlumping file " + _fileName);
+                            Debug.Write("Unlumping file " + _fileName);
 
                             //read the length and translate it from PDP-endian to proper format
                             _PDPlength = r.ReadBytes(4);
@@ -71,7 +73,7 @@ namespace HamsterTools
                                 throw new EndOfStreamException("Reached the end of the file while reading file length");
                             }
                             _length = convertLength(_PDPlength);
-                            Console.Write(", " + _length + " bytes... ");
+                            Debug.Write(", " + _length + " bytes... ");
 
                             //read the file for the length specified
                             using (FileStream outFile = new FileStream(_fileName, FileMode.Create))
@@ -82,7 +84,7 @@ namespace HamsterTools
                                     {
                                             w.Write(r.ReadByte());  
                                     }
-                                    Console.WriteLine("done.");
+                                    Debug.WriteLine("done.");
                                 }
                             }
                             if (inFile.Position == inFile.Length)
@@ -93,7 +95,8 @@ namespace HamsterTools
                         }
                     }   
                     }
-                    Console.WriteLine("Finished unlumping!");
+                Debug.Unindent();
+                    Debug.WriteLine("Finished unlumping!");
 
             }
             else
@@ -112,7 +115,7 @@ namespace HamsterTools
 
         public static void unLump(string sourceFileLocation)
         {
-            Console.WriteLine("No destination directory specified, unlumping to " + Path.GetFileName(sourceFileLocation) 
+            Debug.WriteLine("No destination directory specified, unlumping to " + Path.GetFileName(sourceFileLocation) 
                 + ".hwtmp...");
             string tempDir = sourceFileLocation + ".hwtmp";
             unLump(sourceFileLocation, tempDir);

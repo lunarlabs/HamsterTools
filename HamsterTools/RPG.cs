@@ -10,6 +10,9 @@ namespace HamsterTools
     {
         private static readonly RPG instance = new RPG();
 
+        private string archnym;
+
+
         static RPG()
         {
 
