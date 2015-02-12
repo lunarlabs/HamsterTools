@@ -208,6 +208,13 @@ namespace HamsterTools.Reload
         }
 
         private List<ReloadNode> children = new List<ReloadNode>();
+        public int NumberOfChildren
+        {
+            get
+            {
+                return children.Count;
+            }
+        }
 
         //constructors
         public ReloadNode()
@@ -252,6 +259,49 @@ namespace HamsterTools.Reload
         }
 
         //TODO Add methods related to children.
+        public bool hasChild(String name)
+        {
+            return (getPositionOfChild(name) > 1);
+        }
+
+        public int getPositionOfChild(String name)
+        {
+            for (int i = 0; i < children.Count; i++)
+            {
+                if (children[i].Name == name)
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
+        public ReloadNode getChild(String name)
+        {
+            for (int i = 0; i < children.Count; i++)
+            {
+                if (children[i].Name == name)
+                {
+                    return children[i];
+                }
+            }
+            return null;
+        }
+
+        public ReloadNode getChild(int index)
+        {
+            return children[index];
+        }
+
+        public void addChild(ReloadNode node)
+        {
+            children.Add(node);
+        }
+
+        public void insertChild(ReloadNode node, int index)
+        {
+            children.Insert(index, node);
+        }
 
     }
 
