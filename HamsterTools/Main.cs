@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Diagnostics;
+using System.Windows.Forms;
 
 namespace HamsterTools
 {
@@ -23,6 +24,10 @@ namespace HamsterTools
 
             thefile = @"C:\OHRRPGCE\vikings.rpg.hwtmp\GENERAL.RELD";
             Reload.ReloadFileIO.readReloadFile(thefile);
+
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new HomeScreen());
         }
     }
 }
