@@ -62,7 +62,8 @@ namespace HamsterTools
                                 extractedFileName.Append((char)b);
                                 b = r.ReadByte();
                             } while (b > 0);
-                            _fileName = Path.GetFullPath(destinationDirectory) + Path.DirectorySeparatorChar + extractedFileName.ToString();
+                            _fileName = Path.GetFullPath(destinationDirectory) + Path.DirectorySeparatorChar
+                                + extractedFileName.ToString();
 
                             Debug.Write("Unlumping file " + _fileName);
 

@@ -20,6 +20,9 @@ namespace HamsterTools
 
             string thefile = @"C:\OHRRPGCE\vikings.rpg";
             LumpManager.unLump(thefile);
+
+            thefile = @"C:\OHRRPGCE\vikings.rpg.hwtmp\GENERAL.RELD";
+            Reload.ReloadFileIO.readReloadFile(thefile);
         }
     }
 }

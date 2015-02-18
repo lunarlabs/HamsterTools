@@ -88,7 +88,7 @@ namespace HamsterTools
         // "RELD" ... if it doesn't have this as the first 4 bytes it's NOT a reload file!
         public const byte ReloadVersionNumber = 1;
         // Remember to keep up to date with the email list about RELOAD developments.
-        public const long ReloadHeaderSize = 13;
-        // Why a long? Ask TMC or whoever made the RELOAD spec...
+        public const int ReloadHeaderSize = 13;
+        // Why a int32? Ask TMC or whoever made the RELOAD spec...
     }
 }
