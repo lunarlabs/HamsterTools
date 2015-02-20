@@ -217,6 +217,15 @@ namespace HamsterTools.Reload
             }
         }
 
+        private ReloadNode parent = null;
+        public ReloadNode Parent
+        {
+            get
+            {
+                return parent;
+            }
+        }
+
         //constructors
         public ReloadNode()
         {
@@ -296,11 +305,13 @@ namespace HamsterTools.Reload
 
         public void addChild(ReloadNode node)
         {
+            node.parent = this;
             children.Add(node);
         }
 
         public void insertChild(ReloadNode node, int index)
         {
+            node.parent = this;
             children.Insert(index, node);
         }
 
