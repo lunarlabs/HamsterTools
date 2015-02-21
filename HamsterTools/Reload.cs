@@ -226,6 +226,11 @@ namespace HamsterTools.Reload
             }
         }
 
+        public string toString()
+        {
+            return _nodeName;
+        }
+
         //constructors
         public ReloadNode()
         {
