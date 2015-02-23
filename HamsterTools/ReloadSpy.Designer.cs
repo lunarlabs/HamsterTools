@@ -29,19 +29,19 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("8-bit Node", 1, 1);
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("16-bit Node", 2, 2);
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("32-bit Node", 3, 3);
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("64-bit Node", 4, 4);
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Float Node", 5, 5);
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("String Node", 6, 6);
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Null Node", new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2,
-            treeNode3,
-            treeNode4,
-            treeNode5,
-            treeNode6});
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("8-bit Node", 1, 1);
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("16-bit Node", 2, 2);
+            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("32-bit Node", 3, 3);
+            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("64-bit Node", 4, 4);
+            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Float Node", 5, 5);
+            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("String Node", 6, 6);
+            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Null Node", new System.Windows.Forms.TreeNode[] {
+            treeNode8,
+            treeNode9,
+            treeNode10,
+            treeNode11,
+            treeNode12,
+            treeNode13});
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReloadSpy));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,10 +52,10 @@
             this.copyNodeNameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copyNodeValueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.loadingStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.nodeTree = new System.Windows.Forms.TreeView();
+            this.nodeIcons = new System.Windows.Forms.ImageList(this.components);
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.nodeNameLabel = new System.Windows.Forms.Label();
             this.nodeTypeLabel = new System.Windows.Forms.Label();
@@ -67,7 +67,6 @@
             this.addChildButton = new System.Windows.Forms.Button();
             this.typeTextBox = new System.Windows.Forms.TextBox();
             this.valueTextBox = new System.Windows.Forms.TextBox();
-            this.nodeIcons = new System.Windows.Forms.ImageList(this.components);
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -147,7 +146,6 @@
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripProgressBar1,
             this.loadingStatus});
             this.statusStrip1.Location = new System.Drawing.Point(0, 281);
             this.statusStrip1.Name = "statusStrip1";
@@ -156,17 +154,11 @@
             this.statusStrip1.Text = "statusStrip1";
             this.statusStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.statusStrip1_ItemClicked);
             // 
-            // toolStripProgressBar1
-            // 
-            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
-            this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 16);
-            this.toolStripProgressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
-            // 
             // loadingStatus
             // 
             this.loadingStatus.Name = "loadingStatus";
-            this.loadingStatus.Size = new System.Drawing.Size(125, 17);
-            this.loadingStatus.Text = "Reading RELOAD file...";
+            this.loadingStatus.Size = new System.Drawing.Size(39, 17);
+            this.loadingStatus.Text = "Ready";
             this.loadingStatus.Click += new System.EventHandler(this.toolStripStatusLabel1_Click);
             // 
             // splitContainer1
@@ -195,38 +187,50 @@
             this.nodeTree.ImageList = this.nodeIcons;
             this.nodeTree.Location = new System.Drawing.Point(0, 0);
             this.nodeTree.Name = "nodeTree";
-            treeNode1.ImageIndex = 1;
-            treeNode1.Name = "Node1";
-            treeNode1.SelectedImageIndex = 1;
-            treeNode1.Text = "8-bit Node";
-            treeNode2.ImageIndex = 2;
-            treeNode2.Name = "Node3";
-            treeNode2.SelectedImageIndex = 2;
-            treeNode2.Text = "16-bit Node";
-            treeNode3.ImageIndex = 3;
-            treeNode3.Name = "Node4";
-            treeNode3.SelectedImageIndex = 3;
-            treeNode3.Text = "32-bit Node";
-            treeNode4.ImageIndex = 4;
-            treeNode4.Name = "Node5";
-            treeNode4.SelectedImageIndex = 4;
-            treeNode4.Text = "64-bit Node";
-            treeNode5.ImageIndex = 5;
-            treeNode5.Name = "Node6";
-            treeNode5.SelectedImageIndex = 5;
-            treeNode5.Text = "Float Node";
-            treeNode6.ImageIndex = 6;
-            treeNode6.Name = "Node7";
-            treeNode6.SelectedImageIndex = 6;
-            treeNode6.Text = "String Node";
-            treeNode7.ImageIndex = 0;
-            treeNode7.Name = "Node0";
-            treeNode7.Text = "Null Node";
+            treeNode8.ImageIndex = 1;
+            treeNode8.Name = "Node1";
+            treeNode8.SelectedImageIndex = 1;
+            treeNode8.Text = "8-bit Node";
+            treeNode9.ImageIndex = 2;
+            treeNode9.Name = "Node3";
+            treeNode9.SelectedImageIndex = 2;
+            treeNode9.Text = "16-bit Node";
+            treeNode10.ImageIndex = 3;
+            treeNode10.Name = "Node4";
+            treeNode10.SelectedImageIndex = 3;
+            treeNode10.Text = "32-bit Node";
+            treeNode11.ImageIndex = 4;
+            treeNode11.Name = "Node5";
+            treeNode11.SelectedImageIndex = 4;
+            treeNode11.Text = "64-bit Node";
+            treeNode12.ImageIndex = 5;
+            treeNode12.Name = "Node6";
+            treeNode12.SelectedImageIndex = 5;
+            treeNode12.Text = "Float Node";
+            treeNode13.ImageIndex = 6;
+            treeNode13.Name = "Node7";
+            treeNode13.SelectedImageIndex = 6;
+            treeNode13.Text = "String Node";
+            treeNode14.ImageIndex = 0;
+            treeNode14.Name = "Node0";
+            treeNode14.Text = "Null Node";
             this.nodeTree.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode7});
+            treeNode14});
             this.nodeTree.SelectedImageIndex = 0;
             this.nodeTree.Size = new System.Drawing.Size(162, 257);
             this.nodeTree.TabIndex = 0;
+            // 
+            // nodeIcons
+            // 
+            this.nodeIcons.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("nodeIcons.ImageStream")));
+            this.nodeIcons.TransparentColor = System.Drawing.Color.Transparent;
+            this.nodeIcons.Images.SetKeyName(0, "rnull.png");
+            this.nodeIcons.Images.SetKeyName(1, "r8.png");
+            this.nodeIcons.Images.SetKeyName(2, "r16.png");
+            this.nodeIcons.Images.SetKeyName(3, "r32.png");
+            this.nodeIcons.Images.SetKeyName(4, "r64.png");
+            this.nodeIcons.Images.SetKeyName(5, "rfloat.png");
+            this.nodeIcons.Images.SetKeyName(6, "rstring.png");
             // 
             // tableLayoutPanel1
             // 
@@ -357,18 +361,6 @@
             this.valueTextBox.Size = new System.Drawing.Size(461, 20);
             this.valueTextBox.TabIndex = 6;
             // 
-            // nodeIcons
-            // 
-            this.nodeIcons.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("nodeIcons.ImageStream")));
-            this.nodeIcons.TransparentColor = System.Drawing.Color.Transparent;
-            this.nodeIcons.Images.SetKeyName(0, "rnull.png");
-            this.nodeIcons.Images.SetKeyName(1, "r8.png");
-            this.nodeIcons.Images.SetKeyName(2, "r16.png");
-            this.nodeIcons.Images.SetKeyName(3, "r32.png");
-            this.nodeIcons.Images.SetKeyName(4, "r64.png");
-            this.nodeIcons.Images.SetKeyName(5, "rfloat.png");
-            this.nodeIcons.Images.SetKeyName(6, "rstring.png");
-            // 
             // ReloadSpy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -407,7 +399,6 @@
         private System.Windows.Forms.ToolStripMenuItem copyNodeNameToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem copyNodeValueToolStripMenuItem;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
         private System.Windows.Forms.ToolStripStatusLabel loadingStatus;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.TreeView nodeTree;

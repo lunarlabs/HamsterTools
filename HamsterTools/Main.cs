@@ -27,7 +27,7 @@ namespace HamsterTools
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new HomeScreen());
+            Application.Run(new ReloadSpy());
         }
     }
 }
