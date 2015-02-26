@@ -43,18 +43,32 @@ namespace HamsterTools
                 switch (n.Type)
                 {
                     case ReloadNodeType.Null:
+                        this.ImageIndex = 0;
+                        this.SelectedImageIndex = 0;
                         break;
                     case ReloadNodeType.Byte:
+                        this.ImageIndex = 1;
+                        this.SelectedImageIndex = 1;
                         break;
                     case ReloadNodeType.Int16:
+                        this.ImageIndex = 2;
+                        this.SelectedImageIndex = 2;
                         break;
                     case ReloadNodeType.Int32:
+                        this.ImageIndex = 3;
+                        this.SelectedImageIndex = 3;
                         break;
                     case ReloadNodeType.Int64:
+                        this.ImageIndex = 4;
+                        this.SelectedImageIndex = 4;
                         break;
                     case ReloadNodeType.Double:
+                        this.ImageIndex = 5;
+                        this.SelectedImageIndex = 5;
                         break;
                     case ReloadNodeType.String:
+                        this.ImageIndex = 6;
+                        this.SelectedImageIndex = 6;
                         break;
                     default:
                         break;
@@ -64,7 +78,15 @@ namespace HamsterTools
 
         private void valueTextBox_Validating(object sender, CancelEventArgs e)
         {
+            string errMsg;
+            if (!fitsType(valueTextBox.Text, out errMsg))
+            {
+                //stop everything!
+                e.Cancel = true;
+                valueTextBox.Select(0, valueTextBox.Text.Length);
 
+                this.valueFail.SetError(valueTextBox, errMsg);
+            }
         }
 
         private bool fitsType(string value, out string errorMessage)
@@ -137,6 +159,11 @@ namespace HamsterTools
         }
 
         private void nodeTree_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+
+        }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
