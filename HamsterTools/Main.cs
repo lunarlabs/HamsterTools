@@ -23,7 +23,7 @@ namespace HamsterTools
             LumpManager.unLump(thefile);
 
             thefile = @"C:\OHRRPGCE\vikings.rpg.hwtmp\GENERAL.RELD";
-            Reload.ReloadFileIO.readReloadFile(thefile);
+            Reload.ReloadNode test = Reload.ReloadFileIO.readReloadFile(thefile);
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

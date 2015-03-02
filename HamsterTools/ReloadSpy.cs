@@ -14,7 +14,14 @@ namespace HamsterTools
     public partial class ReloadSpy : Form
     {
 
+        ReloadNode openNode = null;
+        string fileLocation = "";
         ReloadNode selectedNode;
+
+        Microsoft.Win32.OpenFileDialog openDlg = new Microsoft.Win32.OpenFileDialog();
+        Microsoft.Win32.SaveFileDialog saveDlg = new Microsoft.Win32.SaveFileDialog();
+
+        private bool saved = false;
 
         public ReloadSpy()
         {
@@ -166,6 +173,21 @@ namespace HamsterTools
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private reloadTreeNode populateTree(ReloadNode n)
+        {
+            reloadTreeNode result = new reloadTreeNode(n);
+
+            if (n.NumberOfChildren > 0)
+            {
+                for (int i = 0; i < n.NumberOfChildren; i++)
+                {
+                    result.Nodes.Add(populateTree(n.getChild(i)));
+                }
+            }
+
+            return result;
         }
     }
 }
