@@ -18,7 +18,6 @@ namespace HamsterTools
         string fileLocation = "";
         ReloadNode selectedNode;
 
-        Microsoft.Win32.OpenFileDialog openDlg = new Microsoft.Win32.OpenFileDialog();
         Microsoft.Win32.SaveFileDialog saveDlg = new Microsoft.Win32.SaveFileDialog();
 
         private bool saved = false;
@@ -172,7 +171,8 @@ namespace HamsterTools
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            Microsoft.Win32.OpenFileDialog openDlg = new Microsoft.Win32.OpenFileDialog();
+            openDlg.DefaultExt = ".reld";
         }
 
         private reloadTreeNode populateTree(ReloadNode n)
