@@ -208,12 +208,26 @@ namespace HamsterTools.Reload
             }
         }
 
-        private List<ReloadNode> children = new List<ReloadNode>();
+        private List<ReloadNode> _children = new List<ReloadNode>();
+        
+        /// <summary>
+        /// A List containing the node's children.
+        /// </summary>
+        /// <remarks>Instead of using Children.Add and Children.Insert, use addChild and insertChild
+        /// to properly set the parent.</remarks>
+        public List<ReloadNode> Children
+        {
+            get
+            {
+                return _children;
+            }
+        }
+
         public int NumberOfChildren
         {
             get
             {
-                return children.Count;
+                return _children.Count;
             }
         }
 
@@ -232,58 +246,95 @@ namespace HamsterTools.Reload
         }
 
         //constructors
+
+        /// <summary>
+        /// Creates a Null ReloadNode.
+        /// </summary>
         public ReloadNode()
         {
             //No argument means a null node type.
             _type = ReloadNodeType.Null;
         }
 
+        /// <summary>
+        /// Creates a Byte ReloadNode.
+        /// </summary>
+        /// <param name="bData">The node's data.</param>
         public ReloadNode(byte bData){
             _type=ReloadNodeType.Byte;
             _byteData = bData;
         }
 
+        /// <summary>
+        /// Creates a 16-Bit Integer ReloadNode.
+        /// </summary>
+        /// <param name="sData">The node's data.</param>
         public ReloadNode(short sData)
         {
             _type = ReloadNodeType.Int16;
             _int16Data = sData;
         }
 
+        /// <summary>
+        /// Creates a 32-Bit Integer ReloadNode.
+        /// </summary>
+        /// <param name="iData">The node's data.</param>
         public ReloadNode(int iData)
         {
             _type = ReloadNodeType.Int32;
             _int32Data = iData;
         }
 
+        /// <summary>
+        /// Creates a 64-Bit Integer ReloadNode.
+        /// </summary>
+        /// <param name="lData">The node's data.</param>
         public ReloadNode(long lData)
         {
             _type = ReloadNodeType.Int64;
             _int64Data = lData;
         }
 
+        /// <summary>
+        /// Creates a Double-Precision Float ReloadNode.
+        /// </summary>
+        /// <param name="dData">The node's data.</param>
         public ReloadNode(double dData)
         {
             _type = ReloadNodeType.Double;
             _doubleData = dData;
         }
 
+        /// <summary>
+        /// Creates a String ReloadNode.
+        /// </summary>
+        /// <param name="sData">The node's data.</param>
         public ReloadNode(string sData)
         {
             _type = ReloadNodeType.String;
             _stringData = sData;
         }
 
-        //TODO Add methods related to children.
+        /// <summary>
+        /// Checks to see if a ReloadNode has an immediate child with a certain name.
+        /// </summary>
+        /// <param name="name">The name of the child to look for.</param>
+        /// <returns>Returns true if there is an immediate child with the name, or false otherwise.</returns>
         public bool hasChild(String name)
         {
             return (getPositionOfChild(name) > 1);
         }
 
+        /// <summary>
+        /// Returns the position of node's immediate named child.
+        /// </summary>
+        /// <param name="name">The name of the child to look for</param>
+        /// <returns>The position of the child in children, or -1 if the child was not found.</returns>
         public int getPositionOfChild(String name)
         {
-            for (int i = 0; i < children.Count; i++)
+            for (int i = 0; i < _children.Count; i++)
             {
-                if (children[i].Name == name)
+                if (_children[i].Name == name)
                 {
                     return i;
                 }
@@ -291,40 +342,54 @@ namespace HamsterTools.Reload
             return -1;
         }
 
+        /// <summary>
+        /// Returns a node's immediate named child.
+        /// </summary>
+        /// <param name="name">The name of the child to get.</param>
+        /// <returns>The named child, or <c>null</c> if there is no child with that name.</returns>
         public ReloadNode getChild(String name)
         {
-            for (int i = 0; i < children.Count; i++)
+            for (int i = 0; i < _children.Count; i++)
             {
-                if (children[i].Name == name)
+                if (_children[i].Name == name)
                 {
-                    return children[i];
+                    return _children[i];
                 }
             }
             return null;
         }
 
+        /// <summary>
+        /// Returns an immediate child node.
+        /// </summary>
+        /// <param name="index">The number of the child to get</param>
+        /// <returns>The child node.</returns>
         public ReloadNode getChild(int index)
         {
-            return children[index];
+            return _children[index];
         }
 
         public void addChild(ReloadNode node)
         {
             node.parent = this;
-            children.Add(node);
+            _children.Add(node);
         }
 
         public void insertChild(ReloadNode node, int index)
         {
             node.parent = this;
-            children.Insert(index, node);
+            _children.Insert(index, node);
         }
 
     }
 
     public class ReloadFileIO
     {
-        //TODO Write this class.
+        /// <summary>
+        /// Reads a RELOAD file and turns it into a ReloadNode.
+        /// </summary>
+        /// <param name="reloadFileLocation">The file path of the RELOAD file.</param>
+        /// <returns>A ReloadNode containing the node structure of the RELOAD file.</returns>
         public static ReloadNode readReloadFile(string reloadFileLocation)
         {
             ReloadNode result = null;
@@ -341,8 +406,8 @@ namespace HamsterTools.Reload
                     }
                     using (BinaryReader b = new BinaryReader(inFile))
                     {
-                        byte[] magicNumberCheck = b.ReadBytes(4);
-                        if (magicNumberCheck.SequenceEqual(OHRRPGCE.ReloadMagicNumber) == false)
+                        int magicNumberCheck = b.ReadInt32();
+                        if (magicNumberCheck != OHRRPGCE.ReloadMagicNumber)
                         {
                             throw new FileFormatException(reloadFileLocation + " is not a RELOAD file!");
                         }
@@ -477,6 +542,139 @@ namespace HamsterTools.Reload
             return result;
         }
 
+        /// <summary>
+        /// Writes a ReloadNode and its associated tree to a file.
+        /// </summary>
+        /// <param name="reloadFileLocation">The file to write the ReloadNode to.</param>
+        /// <param name="inNode">The ReloadNode to write.</param>
+        /// <remarks>This will overwrite the target file. Make sure you know what you're doing!</remarks>
+        public static void writeReloadFile(string reloadFileLocation, ReloadNode inNode)
+        {
+            List<string> names = new List<string>();
+            int stringMember = 1;
+            int stringTableLocation;
+
+            using (FileStream outFile = new FileStream(reloadFileLocation, FileMode.Create))
+            {
+                using (BinaryWriter b = new BinaryWriter(outFile))
+                {
+                    //Write the preamble first
+                    b.Write(OHRRPGCE.ReloadMagicNumber);
+                    b.Write(OHRRPGCE.ReloadVersionNumber);
+                    b.Write(OHRRPGCE.ReloadHeaderSize);
+                    b.Write((int)0); //We'll get back to the string table soon.
+
+                    //now the node content
+                    writeOut(b, inNode, names);
+
+                    //After that, define where the string table is
+                    stringTableLocation = (int)b.BaseStream.Position;
+                    b.BaseStream.Seek(9, SeekOrigin.Begin);
+                    b.Write(stringTableLocation);
+
+                    //and then go back to where we'll write the string data
+                    b.BaseStream.Seek(stringTableLocation, SeekOrigin.Begin);
+
+                    foreach (string nodeName in names)
+                    {
+                        writeVLI(b, stringMember);
+                        writeString(b, nodeName);
+                        stringMember++;
+                    }
+                    
+                }
+            }
+        }
+
+        private static void writeOut(BinaryWriter bw, ReloadNode node, List<string> nameList)
+        {
+            long startLocation = bw.BaseStream.Position;
+            long flashbackLocation;
+            int nodeLength;
+
+            bw.Write((int)0); //We'll get back to the length later.
+
+            nameList.Add(node.Name);
+            int tablePosition = nameList.Count;
+            writeVLI(bw, tablePosition);
+
+            switch (node.Type)
+            {
+                case ReloadNodeType.Null:
+                    bw.Write((byte)0);
+                    break;
+                case ReloadNodeType.Byte:
+                    bw.Write((byte)1);
+                    bw.Write(node.ByteData);
+                    break;
+                case ReloadNodeType.Int16:
+                    bw.Write((byte)2);
+                    bw.Write(node.Int16Data);
+                    break;
+                case ReloadNodeType.Int32:
+                    bw.Write((byte)3);
+                    bw.Write(node.Int32Data);
+                    break;
+                case ReloadNodeType.Int64:
+                    bw.Write((byte)4);
+                    bw.Write(node.Int64Data);
+                    break;
+                case ReloadNodeType.Double:
+                    bw.Write((byte)5);
+                    bw.Write(node.DoubleData);
+                    break;
+                case ReloadNodeType.String:
+                    bw.Write((byte)6);
+                    writeString(bw, node.StringData);
+                    break;
+                default:
+                    Debug.WriteLine("Something went wrong!");
+                    break;
+            }
+
+            writeVLI(bw, node.Children.Count);
+
+            foreach (ReloadNode child in node.Children)
+            {
+                writeOut(bw, child, nameList);
+            }
+
+            flashbackLocation = bw.BaseStream.Position;
+            nodeLength = (int)(flashbackLocation - startLocation) - 4;
+            bw.BaseStream.Seek(startLocation, SeekOrigin.Begin);
+            bw.Write(nodeLength);
+            bw.BaseStream.Seek(flashbackLocation, SeekOrigin.Begin);
+        }
+
+        private static void writeString(BinaryWriter bw, string s)
+        {
+            writeVLI(bw, s.Length);
+            char[] charArray = s.ToCharArray();
+            foreach (char c in charArray)
+            {
+                bw.Write((byte)c);
+            }
+        }
+
+        // VLI methods
+        /*
+         * A VLI is a variable-length integer.
+         * 
+         * The first byte is of the format:
+         * CNxxxxxx
+         * where C is a flag that indicates whether there are more bytes in the VLI and N is a negation flag.
+         * 
+         * Subsequent bytes are of the format
+         * Cxxxxxxx.
+         * 
+         */
+
+
+        /// <summary>
+        /// Reads a variable-length integer from a file.
+        /// </summary>
+        /// <param name="br"></param>
+        /// <returns></returns>
         private static int readVLI(BinaryReader br)
         {
             bool isNegative = false;
@@ -503,10 +701,48 @@ namespace HamsterTools.Reload
             return result;
         }
 
-        public static void writeReloadFile(string reloadFileLocation, ReloadNode inNode)
+        /// <summary>
+        /// Writes a integer to a file as a variable-length integer.
+        /// </summary>
+        /// <param name="bw">The BinaryWriter pointing to the file to write to.</param>
+        /// <param name="num">The integer to write as a VLI.</param>
+        private static void writeVLI(BinaryWriter bw, int num)
         {
+            bool isNegative = (num < 0);
+            bool isSingleByte = true;
+            int a = num;
+            int b;
+            if (isNegative) a = Math.Abs(a);
+
+            b = a & 0x3f;
+            if (isNegative) b += 0x40;
+            if (a >= 0x40)
+            {
+                b += 0x80;
+                isSingleByte = false;
+            }
+
+            bw.Write(b);
+
+            a = a >> 6;
+
+            //if the number is a single byte, this is skipped
+            while (a > 0x80)
+            {
+                b = (a & 0x7f);
+                b += 0x80;
+                bw.Write(b);
+                a = a >> 7;
+            }
+            //we write the last byte of a multi-byte VLI here.
+            if (!isSingleByte)
+            {
+                b = (a & 0x7f);
+                bw.Write(b);
+            }
 
         }
+
     }
 
     public enum ReloadNodeType

@@ -179,12 +179,9 @@ namespace HamsterTools
         {
             reloadTreeNode result = new reloadTreeNode(n);
 
-            if (n.NumberOfChildren > 0)
+            foreach (ReloadNode child in n.Children)
             {
-                for (int i = 0; i < n.NumberOfChildren; i++)
-                {
-                    result.Nodes.Add(populateTree(n.getChild(i)));
-                }
+                result.Nodes.Add(populateTree(child));
             }
 
             return result;

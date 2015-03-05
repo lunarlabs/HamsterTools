@@ -71,9 +71,25 @@ namespace HamsterTools
             Information, Warning, SuspiciousOperation, Bounds, BadOperation, Error, EngineBug
         }
 
+        /// <summary>
+        /// The way the game engine handles equipment elemental resistances.
+        /// </summary>
         public enum EquipmentElementMath
         {
-            Stupid, Additive, Multiplicative
+            /// <summary>
+            /// The old buggy way. Not recommended.
+            /// </summary>
+            Stupid, 
+
+            /// <summary>
+            /// Equipment resistances are added to the base resistance.
+            /// </summary>
+            Additive, 
+
+            /// <summary>
+            /// Equipment resistances are multipliers.
+            /// </summary>
+            Multiplicative
         }
 
         public enum InventoryAutosortMethod
@@ -84,10 +100,21 @@ namespace HamsterTools
          * RELOAD constants
          */
 
-        public static readonly byte[] ReloadMagicNumber = { 0x52, 0x45, 0x4c, 0x44 }; 
+        /// <summary>
+        /// The string "RELD". All RELOAD files have this as the first four bytes.
+        /// </summary>
+        public const int ReloadMagicNumber = 0x52454c44; 
         // "RELD" ... if it doesn't have this as the first 4 bytes it's NOT a reload file!
+        
+        /// <summary>
+        /// The latest RELOAD version that can be handled.
+        /// </summary>
         public const byte ReloadVersionNumber = 1;
         // Remember to keep up to date with the email list about RELOAD developments.
+        
+        /// <summary>
+        /// The size of the RELOAD header.
+        /// </summary>
         public const int ReloadHeaderSize = 13;
         // Why a int32? Ask TMC or whoever made the RELOAD spec...
     }
