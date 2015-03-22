@@ -58,5 +58,14 @@ namespace HamsterTools.Properties {
                 this["HspeakLocation"] = value;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool Configured {
+            get {
+                return ((bool)(this["Configured"]));
+            }
+        }
     }
 }

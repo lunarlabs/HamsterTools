@@ -11,5 +11,8 @@
     <Setting Name="HspeakLocation" Type="System.String" Scope="User">
       <Value Profile="(Default)">C:\OHRRPGCE\hspeak.exe</Value>
     </Setting>
+    <Setting Name="Configured" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
