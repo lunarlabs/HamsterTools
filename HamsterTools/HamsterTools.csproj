@@ -87,6 +87,7 @@
     <Compile Include="NewNodeDialog.Designer.cs">
       <DependentUpon>NewNodeDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="OHRMap.cs" />
     <Compile Include="OHRRPGCE.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>

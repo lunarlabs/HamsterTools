@@ -12,7 +12,7 @@ namespace HamsterTools
         /*
          *OHRRPGCE CUSTOM constants 
          */
-        public const string CompatibleVersion = "beelzebufo";
+        public const string CompatibleVersion = "callipygous";
         public const int CurrentRPGVersion = 19;
         // It is a good idea to increment this number each time a major feature
         // has been added, if opening a new game in an old editor would cause data-loss
