@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using HamsterTools.Reload;
+using System.IO;
 
 namespace HamsterTools
 {
@@ -17,8 +18,10 @@ namespace HamsterTools
         ReloadNode openNode = null;
         string fileLocation = "";
         ReloadNode selectedNode;
+        Nullable<bool> dialogResult;
 
         Microsoft.Win32.SaveFileDialog saveDlg = new Microsoft.Win32.SaveFileDialog();
+        Microsoft.Win32.OpenFileDialog openDlg = new Microsoft.Win32.OpenFileDialog();
 
         private bool saved = false;
 
@@ -171,8 +174,40 @@ namespace HamsterTools
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Microsoft.Win32.OpenFileDialog openDlg = new Microsoft.Win32.OpenFileDialog();
             openDlg.DefaultExt = ".reld";
+            openDlg.Filter = "RELOAD Files|*.reld";
+
+            dialogResult = openDlg.ShowDialog();
+            if (dialogResult == true)
+            {
+                try
+                {
+                    openNode = ReloadFileIO.readReloadFile(openDlg.FileName);
+                    nodeTree.Nodes.Clear(); //close the previous file;
+                    nodeTree.Nodes.Add(populateTree(openNode));
+                }
+                catch (FileFormatException)
+                {
+                    MessageBox.Show("RELOADSpy can't open this file because it doesn't appear to be a RELOAD file.",
+                        "RELOADSpy", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (InvalidDataException)
+                {
+                    MessageBox.Show("This RELOAD file appears to be corrupt.",
+                        "RELOADSpy", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
+                catch (FileNotFoundException)
+                {
+                    MessageBox.Show("Can't find this file. It may have been deleted or moved.", 
+                        "RELOADSpy", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+
+                }
+            }
         }
 
         private reloadTreeNode populateTree(ReloadNode n)
