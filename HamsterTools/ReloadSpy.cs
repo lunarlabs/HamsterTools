@@ -174,14 +174,23 @@ namespace HamsterTools
         {
             Microsoft.Win32.OpenFileDialog openDlg = new Microsoft.Win32.OpenFileDialog();
             openDlg.DefaultExt = ".reld";
-            openDlg.Filter = "RELOAD Files|*.reld";
+            openDlg.Filter = "RELOAD Files|*.reld|All Files|*.*";
 
             dialogResult = openDlg.ShowDialog();
             if (dialogResult == true)
             {
                 try
                 {
-                    openNode = ReloadFileIO.readReloadFile(openDlg.FileName);
+                    fileLocation = openDlg.FileName;
+                    loadingStatus.Text = "Opening " + fileLocation + "...";
+                    nameTextBox.Enabled = false;
+                    valueTextBox.Enabled = false;
+                    addChildButton.Enabled = false;
+                    addSiblingButton.Enabled = false;
+                    deleteNodeButton.Enabled = false;
+                    nodeTree.Enabled = false;
+
+                    openNode = ReloadFileIO.readReloadFile(fileLocation);
                     nodeTree.Nodes.Clear(); //close the previous file;
                     nodeTree.Nodes.Add(populateTree(openNode));
                 }
@@ -206,6 +215,11 @@ namespace HamsterTools
                 {
 
                 }
+                finally
+                {
+                    loadingStatus.Text = "Ready";
+                    nodeTree.Enabled = true;
+                }
             }
         }
 
@@ -219,6 +233,11 @@ namespace HamsterTools
             }
 
             return result;
+        }
+
+        private void typeTextBox_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

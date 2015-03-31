@@ -29,19 +29,19 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("8-bit Node", 1, 1);
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("16-bit Node", 2, 2);
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("32-bit Node", 3, 3);
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("64-bit Node", 4, 4);
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Float Node", 5, 5);
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("String Node", 6, 6);
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Null Node", new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2,
-            treeNode3,
-            treeNode4,
-            treeNode5,
-            treeNode6});
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("8-bit Node", 1, 1);
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("16-bit Node", 2, 2);
+            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("32-bit Node", 3, 3);
+            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("64-bit Node", 4, 4);
+            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Float Node", 5, 5);
+            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("String Node", 6, 6);
+            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Null Node", new System.Windows.Forms.TreeNode[] {
+            treeNode8,
+            treeNode9,
+            treeNode10,
+            treeNode11,
+            treeNode12,
+            treeNode13});
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReloadSpy));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -109,34 +109,34 @@
             this.saveToolStripMenuItem.Enabled = false;
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.saveToolStripMenuItem.Text = "Save";
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Enabled = false;
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.saveAsToolStripMenuItem.Text = "Save As...";
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
             this.openToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(145, 6);
             // 
             // closeToolStripMenuItem
             // 
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
             this.closeToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.W)));
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.closeToolStripMenuItem.Text = "Close";
             // 
             // editToolStripMenuItem
@@ -204,35 +204,35 @@
             this.nodeTree.ImageList = this.nodeIcons;
             this.nodeTree.Location = new System.Drawing.Point(0, 0);
             this.nodeTree.Name = "nodeTree";
-            treeNode1.ImageIndex = 1;
-            treeNode1.Name = "Node1";
-            treeNode1.SelectedImageIndex = 1;
-            treeNode1.Text = "8-bit Node";
-            treeNode2.ImageIndex = 2;
-            treeNode2.Name = "Node3";
-            treeNode2.SelectedImageIndex = 2;
-            treeNode2.Text = "16-bit Node";
-            treeNode3.ImageIndex = 3;
-            treeNode3.Name = "Node4";
-            treeNode3.SelectedImageIndex = 3;
-            treeNode3.Text = "32-bit Node";
-            treeNode4.ImageIndex = 4;
-            treeNode4.Name = "Node5";
-            treeNode4.SelectedImageIndex = 4;
-            treeNode4.Text = "64-bit Node";
-            treeNode5.ImageIndex = 5;
-            treeNode5.Name = "Node6";
-            treeNode5.SelectedImageIndex = 5;
-            treeNode5.Text = "Float Node";
-            treeNode6.ImageIndex = 6;
-            treeNode6.Name = "Node7";
-            treeNode6.SelectedImageIndex = 6;
-            treeNode6.Text = "String Node";
-            treeNode7.ImageIndex = 0;
-            treeNode7.Name = "Node0";
-            treeNode7.Text = "Null Node";
+            treeNode8.ImageIndex = 1;
+            treeNode8.Name = "Node1";
+            treeNode8.SelectedImageIndex = 1;
+            treeNode8.Text = "8-bit Node";
+            treeNode9.ImageIndex = 2;
+            treeNode9.Name = "Node3";
+            treeNode9.SelectedImageIndex = 2;
+            treeNode9.Text = "16-bit Node";
+            treeNode10.ImageIndex = 3;
+            treeNode10.Name = "Node4";
+            treeNode10.SelectedImageIndex = 3;
+            treeNode10.Text = "32-bit Node";
+            treeNode11.ImageIndex = 4;
+            treeNode11.Name = "Node5";
+            treeNode11.SelectedImageIndex = 4;
+            treeNode11.Text = "64-bit Node";
+            treeNode12.ImageIndex = 5;
+            treeNode12.Name = "Node6";
+            treeNode12.SelectedImageIndex = 5;
+            treeNode12.Text = "Float Node";
+            treeNode13.ImageIndex = 6;
+            treeNode13.Name = "Node7";
+            treeNode13.SelectedImageIndex = 6;
+            treeNode13.Text = "String Node";
+            treeNode14.ImageIndex = 0;
+            treeNode14.Name = "Node0";
+            treeNode14.Text = "Null Node";
             this.nodeTree.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode7});
+            treeNode14});
             this.nodeTree.SelectedImageIndex = 0;
             this.nodeTree.Size = new System.Drawing.Size(162, 257);
             this.nodeTree.TabIndex = 0;
@@ -368,6 +368,7 @@
             this.typeTextBox.Size = new System.Drawing.Size(461, 20);
             this.typeTextBox.TabIndex = 5;
             this.typeTextBox.Text = "(No node selected)";
+            this.typeTextBox.TextChanged += new System.EventHandler(this.typeTextBox_TextChanged);
             // 
             // valueTextBox
             // 
