@@ -103,7 +103,7 @@ namespace HamsterTools
         /// <summary>
         /// The string "RELD". All RELOAD files have this as the first four bytes.
         /// </summary>
-        public const int ReloadMagicNumber = 0x52454c44; 
+        public const int ReloadMagicNumber = 0x444c4552; 
         // "RELD" ... if it doesn't have this as the first 4 bytes it's NOT a reload file!
         
         /// <summary>

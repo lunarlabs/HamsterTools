@@ -21,8 +21,6 @@ namespace HamsterTools
         Nullable<bool> dialogResult;
 
         Microsoft.Win32.SaveFileDialog saveDlg = new Microsoft.Win32.SaveFileDialog();
-        Microsoft.Win32.OpenFileDialog openDlg = new Microsoft.Win32.OpenFileDialog();
-
         private bool saved = false;
 
         public ReloadSpy()
@@ -174,6 +172,7 @@ namespace HamsterTools
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Microsoft.Win32.OpenFileDialog openDlg = new Microsoft.Win32.OpenFileDialog();
             openDlg.DefaultExt = ".reld";
             openDlg.Filter = "RELOAD Files|*.reld";
 

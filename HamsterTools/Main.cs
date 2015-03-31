@@ -11,6 +11,7 @@ namespace HamsterTools
 {
     class Kickstart
     {
+        [STAThread]
         static void Main(string[] args)
         {
             Debug.WriteLine("HamsterTools, " + OHRRPGCE.CompatibleVersion + "-compatible");
@@ -28,6 +29,10 @@ namespace HamsterTools
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new ReloadSpy());
+        }
+        static void Panic(Exception ex)
+        {
+
         }
     }
 }
