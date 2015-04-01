@@ -91,6 +91,7 @@ namespace HamsterTools
                 //stop everything!
                 e.Cancel = true;
                 valueTextBox.Select(0, valueTextBox.Text.Length);
+                System.Media.SystemSounds.Beep.Play();
 
                 this.valueFail.SetError(valueTextBox, errMsg);
             }
@@ -162,12 +163,61 @@ namespace HamsterTools
         private void valueTextBox_Validated(object sender, EventArgs e)
         {
             //everything worked okay, clear the error
-            valueFail.SetError(valueTextBox, "");
+            valueFail.Clear();
         }
 
         private void nodeTree_AfterSelect(object sender, TreeViewEventArgs e)
         {
+            reloadTreeNode selected = (reloadTreeNode)nodeTree.SelectedNode;
+            selectedNode = selected.Node;
+            addChildButton.Enabled = true;
+            addSiblingButton.Enabled = true;
+            deleteNodeButton.Enabled = true;
+            nameTextBox.Text = selectedNode.Name;
+            nameTextBox.Enabled = true;
 
+            switch (selectedNode.Type)
+            {
+                case ReloadNodeType.Null:
+                    typeTextBox.Text = "Null";
+                    valueTextBox.Enabled = false;
+                    editCheckBox.CheckState = CheckState.Unchecked;
+                    editCheckBox.Enabled = false;
+                    valueTextBox.Text = "(no data)";
+                    break;
+                case ReloadNodeType.Byte:
+                    typeTextBox.Text = "Byte";
+                    valueTextBox.Text = selectedNode.ByteData.ToString();
+                    editCheckBox.Enabled = true;
+                    break;
+                case ReloadNodeType.Int16:
+                    typeTextBox.Text = "16-bit integer";
+                    valueTextBox.Text = selectedNode.Int16Data.ToString();
+                    editCheckBox.Enabled = true;
+                    break;
+                case ReloadNodeType.Int32:
+                    typeTextBox.Text = "32-bit integer";
+                    valueTextBox.Text = selectedNode.Int32Data.ToString();
+                    editCheckBox.Enabled = true;
+                    break;
+                case ReloadNodeType.Int64:
+                    typeTextBox.Text = "64-bit integer";
+                    valueTextBox.Text = selectedNode.Int64Data.ToString();
+                    editCheckBox.Enabled = true;
+                    break;
+                case ReloadNodeType.Double:
+                    typeTextBox.Text = "Double-precision float";
+                    valueTextBox.Text = selectedNode.DoubleData.ToString();
+                    editCheckBox.Enabled = true;
+                    break;
+                case ReloadNodeType.String:
+                    typeTextBox.Text = "String/Byte blob";
+                    valueTextBox.Text = selectedNode.StringData;
+                    editCheckBox.Enabled = true;
+                    break;
+                default:
+                    break;
+            }
         }
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
@@ -189,6 +239,12 @@ namespace HamsterTools
                     addSiblingButton.Enabled = false;
                     deleteNodeButton.Enabled = false;
                     nodeTree.Enabled = false;
+                    editCheckBox.Enabled = false;
+                    editCheckBox.CheckState = CheckState.Unchecked;
+                    typeTextBox.Text = "(No node selected)";
+                    nameTextBox.Text = "";
+                    valueTextBox.Text = "";
+                    selectedNode = null;
 
                     openNode = ReloadFileIO.readReloadFile(fileLocation);
                     nodeTree.Nodes.Clear(); //close the previous file;
@@ -238,6 +294,25 @@ namespace HamsterTools
         private void typeTextBox_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void editCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (editCheckBox.CheckState == CheckState.Checked)
+            {
+                if (selectedNode != null && selectedNode.Type != ReloadNodeType.Null)
+                {
+                    valueTextBox.Enabled = true;
+                }
+                else
+                {
+                    editCheckBox.CheckState = CheckState.Unchecked;
+                }
+            }
+            else
+            {
+                valueTextBox.Enabled = false;
+            }
         }
     }
 }

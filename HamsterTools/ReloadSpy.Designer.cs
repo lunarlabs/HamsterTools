@@ -29,19 +29,19 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("8-bit Node", 1, 1);
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("16-bit Node", 2, 2);
-            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("32-bit Node", 3, 3);
-            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("64-bit Node", 4, 4);
-            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Float Node", 5, 5);
-            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("String Node", 6, 6);
-            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Null Node", new System.Windows.Forms.TreeNode[] {
-            treeNode8,
-            treeNode9,
-            treeNode10,
-            treeNode11,
-            treeNode12,
-            treeNode13});
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("8-bit Node", 1, 1);
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("16-bit Node", 2, 2);
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("32-bit Node", 3, 3);
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("64-bit Node", 4, 4);
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Float Node", 5, 5);
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("String Node", 6, 6);
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Null Node", new System.Windows.Forms.TreeNode[] {
+            treeNode1,
+            treeNode2,
+            treeNode3,
+            treeNode4,
+            treeNode5,
+            treeNode6});
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReloadSpy));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -70,6 +70,7 @@
             this.typeTextBox = new System.Windows.Forms.TextBox();
             this.valueTextBox = new System.Windows.Forms.TextBox();
             this.valueFail = new System.Windows.Forms.ErrorProvider(this.components);
+            this.editCheckBox = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -204,35 +205,35 @@
             this.nodeTree.ImageList = this.nodeIcons;
             this.nodeTree.Location = new System.Drawing.Point(0, 0);
             this.nodeTree.Name = "nodeTree";
-            treeNode8.ImageIndex = 1;
-            treeNode8.Name = "Node1";
-            treeNode8.SelectedImageIndex = 1;
-            treeNode8.Text = "8-bit Node";
-            treeNode9.ImageIndex = 2;
-            treeNode9.Name = "Node3";
-            treeNode9.SelectedImageIndex = 2;
-            treeNode9.Text = "16-bit Node";
-            treeNode10.ImageIndex = 3;
-            treeNode10.Name = "Node4";
-            treeNode10.SelectedImageIndex = 3;
-            treeNode10.Text = "32-bit Node";
-            treeNode11.ImageIndex = 4;
-            treeNode11.Name = "Node5";
-            treeNode11.SelectedImageIndex = 4;
-            treeNode11.Text = "64-bit Node";
-            treeNode12.ImageIndex = 5;
-            treeNode12.Name = "Node6";
-            treeNode12.SelectedImageIndex = 5;
-            treeNode12.Text = "Float Node";
-            treeNode13.ImageIndex = 6;
-            treeNode13.Name = "Node7";
-            treeNode13.SelectedImageIndex = 6;
-            treeNode13.Text = "String Node";
-            treeNode14.ImageIndex = 0;
-            treeNode14.Name = "Node0";
-            treeNode14.Text = "Null Node";
+            treeNode1.ImageIndex = 1;
+            treeNode1.Name = "Node1";
+            treeNode1.SelectedImageIndex = 1;
+            treeNode1.Text = "8-bit Node";
+            treeNode2.ImageIndex = 2;
+            treeNode2.Name = "Node3";
+            treeNode2.SelectedImageIndex = 2;
+            treeNode2.Text = "16-bit Node";
+            treeNode3.ImageIndex = 3;
+            treeNode3.Name = "Node4";
+            treeNode3.SelectedImageIndex = 3;
+            treeNode3.Text = "32-bit Node";
+            treeNode4.ImageIndex = 4;
+            treeNode4.Name = "Node5";
+            treeNode4.SelectedImageIndex = 4;
+            treeNode4.Text = "64-bit Node";
+            treeNode5.ImageIndex = 5;
+            treeNode5.Name = "Node6";
+            treeNode5.SelectedImageIndex = 5;
+            treeNode5.Text = "Float Node";
+            treeNode6.ImageIndex = 6;
+            treeNode6.Name = "Node7";
+            treeNode6.SelectedImageIndex = 6;
+            treeNode6.Text = "String Node";
+            treeNode7.ImageIndex = 0;
+            treeNode7.Name = "Node0";
+            treeNode7.Text = "Null Node";
             this.nodeTree.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode14});
+            treeNode7});
             this.nodeTree.SelectedImageIndex = 0;
             this.nodeTree.Size = new System.Drawing.Size(162, 257);
             this.nodeTree.TabIndex = 0;
@@ -262,15 +263,17 @@
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.typeTextBox, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.valueTextBox, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.editCheckBox, 1, 5);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(2, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 5;
+            this.tableLayoutPanel1.RowCount = 6;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.Size = new System.Drawing.Size(537, 253);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
@@ -373,16 +376,31 @@
             // valueTextBox
             // 
             this.valueTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.valueTextBox.Enabled = false;
             this.valueTextBox.Location = new System.Drawing.Point(73, 55);
+            this.valueTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 40, 3);
             this.valueTextBox.Name = "valueTextBox";
-            this.valueTextBox.Size = new System.Drawing.Size(461, 20);
+            this.valueTextBox.Size = new System.Drawing.Size(424, 20);
             this.valueTextBox.TabIndex = 6;
             this.valueTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.valueTextBox_Validating);
             this.valueTextBox.Validated += new System.EventHandler(this.valueTextBox_Validated);
             // 
             // valueFail
             // 
+            this.valueFail.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.AlwaysBlink;
             this.valueFail.ContainerControl = this;
+            // 
+            // editCheckBox
+            // 
+            this.editCheckBox.AutoSize = true;
+            this.editCheckBox.Enabled = false;
+            this.editCheckBox.Location = new System.Drawing.Point(73, 233);
+            this.editCheckBox.Name = "editCheckBox";
+            this.editCheckBox.Size = new System.Drawing.Size(95, 17);
+            this.editCheckBox.TabIndex = 7;
+            this.editCheckBox.Text = "Edit node data";
+            this.editCheckBox.UseVisualStyleBackColor = true;
+            this.editCheckBox.CheckedChanged += new System.EventHandler(this.editCheckBox_CheckedChanged);
             // 
             // ReloadSpy
             // 
@@ -441,6 +459,7 @@
         private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ErrorProvider valueFail;
+        private System.Windows.Forms.CheckBox editCheckBox;
 
     }
 }
