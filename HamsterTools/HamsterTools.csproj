@@ -95,6 +95,7 @@
     </Compile>
     <Compile Include="OHRMap.cs" />
     <Compile Include="OHRRPGCE.cs" />
+    <Compile Include="RPG.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -107,7 +108,6 @@
     <Compile Include="ReloadSpy.Designer.cs">
       <DependentUpon>ReloadSpy.cs</DependentUpon>
     </Compile>
-    <Compile Include="RPG.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
