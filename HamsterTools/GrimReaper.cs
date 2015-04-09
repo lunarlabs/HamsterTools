@@ -10,26 +10,16 @@ using System.Windows.Forms;
 
 namespace HamsterTools
 {
-    public partial class HomeScreen : Form
+    public partial class GrimReaper : Form
     {
-        public HomeScreen()
+        public GrimReaper()
         {
             InitializeComponent();
         }
 
-        private void HomeScreen_Load(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void openToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
+            Application.Exit();
         }
     }
 }

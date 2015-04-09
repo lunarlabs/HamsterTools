@@ -32,7 +32,7 @@ namespace HamsterTools
         }
         static void Panic(Exception ex)
         {
-
+            FormCollection fc = Application.OpenForms;
         }
     }
 }

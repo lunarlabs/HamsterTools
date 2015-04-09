@@ -69,8 +69,9 @@
             this.addChildButton = new System.Windows.Forms.Button();
             this.typeTextBox = new System.Windows.Forms.TextBox();
             this.valueTextBox = new System.Windows.Forms.TextBox();
-            this.valueFail = new System.Windows.Forms.ErrorProvider(this.components);
             this.editCheckBox = new System.Windows.Forms.CheckBox();
+            this.valueFail = new System.Windows.Forms.ErrorProvider(this.components);
+            this.fileIO = new System.ComponentModel.BackgroundWorker();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -385,11 +386,6 @@
             this.valueTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.valueTextBox_Validating);
             this.valueTextBox.Validated += new System.EventHandler(this.valueTextBox_Validated);
             // 
-            // valueFail
-            // 
-            this.valueFail.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.AlwaysBlink;
-            this.valueFail.ContainerControl = this;
-            // 
             // editCheckBox
             // 
             this.editCheckBox.AutoSize = true;
@@ -401,6 +397,15 @@
             this.editCheckBox.Text = "Edit node data";
             this.editCheckBox.UseVisualStyleBackColor = true;
             this.editCheckBox.CheckedChanged += new System.EventHandler(this.editCheckBox_CheckedChanged);
+            // 
+            // valueFail
+            // 
+            this.valueFail.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.AlwaysBlink;
+            this.valueFail.ContainerControl = this;
+            // 
+            // fileIO
+            // 
+            this.fileIO.DoWork += new System.ComponentModel.DoWorkEventHandler(this.fileIO_DoWork);
             // 
             // ReloadSpy
             // 
@@ -460,6 +465,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ErrorProvider valueFail;
         private System.Windows.Forms.CheckBox editCheckBox;
+        private System.ComponentModel.BackgroundWorker fileIO;
 
     }
 }

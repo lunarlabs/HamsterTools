@@ -267,10 +267,6 @@ namespace HamsterTools
                         "RELOADSpy", MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
                 }
-                catch (Exception ex)
-                {
-
-                }
                 finally
                 {
                     loadingStatus.Text = "Ready";
@@ -313,6 +309,11 @@ namespace HamsterTools
             {
                 valueTextBox.Enabled = false;
             }
+        }
+
+        private void fileIO_DoWork(object sender, DoWorkEventArgs e)
+        {
+
         }
     }
 }
